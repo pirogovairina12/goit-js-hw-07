@@ -43,8 +43,7 @@ const img = document.querySelector(".gallery__image");
 
 function  onOriginImgClick(e) {
 
-    if (e.target.classList.contains('gallery__image')) {
-        const instance = basicLightbox.create(`
+    const instance = basicLightbox.create(`
       <img
         class="gallery__image"
         src="${e.target.dataset.original}"
@@ -54,7 +53,7 @@ function  onOriginImgClick(e) {
     `)
 
         instance.show()
-    }
+
 }
 
 
