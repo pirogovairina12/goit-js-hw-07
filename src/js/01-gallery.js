@@ -47,7 +47,7 @@ function  onOriginImgClick(e) {
         const instance = basicLightbox.create(`
       <img
         class="gallery__image"
-        src="${e.target.dataset.source}"
+        src="${e.target.dataset.original}"
         data-source=""
         alt=""
       />
@@ -56,7 +56,7 @@ function  onOriginImgClick(e) {
         instance.show()
     }
 
-    console.log(e)
+
 }
 
 
