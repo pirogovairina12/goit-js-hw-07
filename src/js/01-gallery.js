@@ -75,10 +75,14 @@ const onEscPress = (event, instance) => {
     const ESC_KEYCODE = "Escape";
     if (event.code === ESC_KEYCODE) {
         instance.close();
-        instances.splice(instances.indexOf(instance), 1); // Remove instance from array
+        instance.splice(instance.indexOf(instance), 1);
         document.removeEventListener("keydown", (event) =>
             onEscPress(event, instance)
         );
     }
 };
+
+
+
+
 
