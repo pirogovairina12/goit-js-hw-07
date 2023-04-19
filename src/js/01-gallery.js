@@ -36,22 +36,37 @@ link.addEventListener('click', function (event) {
 
 const img = document.querySelector(".gallery__image");
 
-img.addEventListener('click', onOriginImgClick);
+// img.addEventListener('click', onOriginImgClick);
+//
+// function  onOriginImgClick(e) {
+//
+//     const instance = basicLightbox.create(`
+//       <img
+//         class="gallery__image"
+//         src="${e.target.dataset.original}"
+//         data-source="data-original-img"
+//         alt="${e.target.dataset.description}"
+//       />
+//     `)
+//
+//         instance.show()
+//
+// }
 
-function  onOriginImgClick(e) {
+gallery.addEventListener('click', onGalleryClick);
 
+function onGalleryClick(e) {
+    e.preventDefault();
+
+    if (e.target.nodeName !== 'IMG') {
+        return;
+    }
+
+    const bigImageURL = e.target.dataset.original;
     const instance = basicLightbox.create(`
-      <img
-        class="gallery__image"
-        src="${e.target.dataset.original}"
-        data-source="data-original-img"
-        alt="${e.target.dataset.description}"
-      />
-    `)
+    <img src="${bigImageURL}">
+  `);
 
-        instance.show()
-
+    instance.show();
 }
-
-
 
