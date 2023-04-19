@@ -28,7 +28,7 @@ function galleryHTML() {
 }
 
 
-gallery.insertAdjacentHTML('beforeend', galleryHTML());
+gallery.insertAdjacentHTML('afterbegin', galleryHTML());
 
 const link = document.querySelector('.gallery__link');
 
@@ -55,7 +55,6 @@ function  onOriginImgClick(e) {
         instance.show()
 
 }
-
 
 
 
