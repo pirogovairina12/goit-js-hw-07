@@ -24,7 +24,7 @@ function galleryHTML() {
 
 }
 
-gallery.insertAdjacentHTML('afterbegin', galleryHTML());
+gallery.insertAdjacentHTML('beforeend', galleryHTML());
 
 
 const link = document.querySelector('.gallery__link');
