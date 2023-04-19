@@ -1,12 +1,9 @@
 import {galleryItems} from './gallery-items.js';
 import * as basicLightbox from '../dist/basicLightbox.min.js';
 
-
-
 console.log(galleryItems);
 
 const gallery = document.querySelector('.gallery');
-
 
 function galleryHTML() {
     return galleryItems.map(({preview, description, original}) => {
@@ -27,8 +24,8 @@ function galleryHTML() {
 
 }
 
-
 gallery.insertAdjacentHTML('afterbegin', galleryHTML());
+
 
 const link = document.querySelector('.gallery__link');
 
@@ -39,7 +36,7 @@ link.addEventListener('click', function (event) {
 
 const img = document.querySelector(".gallery__image");
 
- img.addEventListener('click', onOriginImgClick);
+img.addEventListener('click', onOriginImgClick);
 
 function  onOriginImgClick(e) {
 
@@ -47,15 +44,14 @@ function  onOriginImgClick(e) {
       <img
         class="gallery__image"
         src="${e.target.dataset.original}"
-        data-source=""
-        alt=""
+        data-source="data-original-img"
+        alt="${e.target.dataset.description}"
       />
     `)
 
         instance.show()
 
 }
-
 
 
 
