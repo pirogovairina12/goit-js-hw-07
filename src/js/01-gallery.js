@@ -1,5 +1,5 @@
 import {galleryItems} from './gallery-items.js';
-import * as basicLightbox from '../dist/basicLightbox.min.js';
+
 
 console.log(galleryItems);
 
@@ -62,7 +62,7 @@ function onGalleryClick(e) {
         return;
     }
 
-    const bigImageURL = e.target.dataset.original;
+    const bigImageURL = e.target.original;
     const instance = basicLightbox.create(`
     <img src="${bigImageURL}">
   `);
@@ -81,7 +81,5 @@ const onEscPress = (event, instance) => {
         );
     }
 };
-
-
 
 
