@@ -33,25 +33,7 @@ link.addEventListener('click', function (event) {
     event.preventDefault();
 });
 
-
 const img = document.querySelector(".gallery__image");
-
-// img.addEventListener('click', onOriginImgClick);
-//
-// function  onOriginImgClick(e) {
-//
-//     const instance = basicLightbox.create(`
-//       <img
-//         class="gallery__image"
-//         src="${e.target.dataset.original}"
-//         data-source="data-original-img"
-//         alt="${e.target.dataset.description}"
-//       />
-//     `)
-//
-//         instance.show()
-//
-// }
 
 gallery.addEventListener('click', onGalleryClick);
 
@@ -62,9 +44,8 @@ function onGalleryClick(e) {
         return;
     }
 
-    const bigImageURL = e.target.original;
     const instance = basicLightbox.create(`
-    <img src="${bigImageURL}">
+    <img src="${e.target.original}">
   `);
 
     instance.show();
@@ -81,5 +62,4 @@ const onEscPress = (event, instance) => {
         );
     }
 };
-
 
