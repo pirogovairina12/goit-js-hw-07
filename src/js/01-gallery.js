@@ -21,8 +21,8 @@ function galleryHTML() {
 
 }
 
-// gallery.insertAdjacentHTML('beforeend', galleryHTML());
-gallery.innerHTML = galleryItems.map(galleryHTML).join("");
+gallery.insertAdjacentHTML('beforeend', galleryHTML());
+//gallery.innerHTML = galleryItems.map(galleryHTML).join("");
 
 // const link = document.querySelector('.gallery__link');
 //
