@@ -30,7 +30,7 @@ gallery.innerHTML = galleryItems.map(galleryHTML).join("");
 //     event.preventDefault();
 // });
 
-const img = document.querySelector(".gallery__image");
+//const img = document.querySelector(".gallery__image");
 
 gallery.addEventListener('click', onGalleryClick);
 
