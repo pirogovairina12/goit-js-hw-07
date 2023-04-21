@@ -1,8 +1,5 @@
 import {galleryItems} from './gallery-items.js';
 
-
-console.log(galleryItems);
-
 const gallery = document.querySelector('.gallery');
 
 function galleryHTML() {
@@ -24,14 +21,14 @@ function galleryHTML() {
 
 }
 
-gallery.insertAdjacentHTML('beforeend', galleryHTML());
+// gallery.insertAdjacentHTML('beforeend', galleryHTML());
+gallery.innerHTML = galleryItems.map(galleryHTML).join("");
 
-
-const link = document.querySelector('.gallery__link');
-
-link.addEventListener('click', function (event) {
-    event.preventDefault();
-});
+// const link = document.querySelector('.gallery__link');
+//
+// link.addEventListener('click', function (event) {
+//     event.preventDefault();
+// });
 
 const img = document.querySelector(".gallery__image");
 
@@ -63,3 +60,4 @@ function onEscPress(event, instance) {
 
 gallery.addEventListener('click', onGalleryClick);
 
+console.log(galleryItems);
