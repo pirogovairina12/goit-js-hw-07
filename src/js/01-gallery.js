@@ -1,9 +1,10 @@
 import {galleryItems} from './gallery-items.js';
 
 const gallery = document.querySelector('.gallery');
+ let instance;
 
 function galleryHTML() {
-    return galleryItems.map(({preview, description, original}) => {
+    return  galleryItems.map(({preview, description, original}) => {
         return `
                 <li class="gallery__item">
                     <a class="gallery__link" href="${original}">
@@ -22,17 +23,9 @@ function galleryHTML() {
 }
 
 gallery.insertAdjacentHTML('beforeend', galleryHTML());
-//gallery.innerHTML = galleryItems.map(galleryHTML).join("");
-
-// const link = document.querySelector('.gallery__link');
-//
-// link.addEventListener('click', function (event) {
-//     event.preventDefault();
-// });
-
-//const img = document.querySelector(".gallery__image");
 
 gallery.addEventListener('click', onGalleryClick);
+
 
 
 function onGalleryClick(e) {
@@ -42,21 +35,20 @@ function onGalleryClick(e) {
         return;
     }
     const largeImageURL = e.target.dataset.source;
-    const instance = basicLightbox.create(`<img src="${largeImageURL}" width="800" height="600">`);
+     instance = basicLightbox.create(`<img src="${largeImageURL}" width="800" height="600">`);
 
 
-    instance.show();
-    document.addEventListener('keydown', (event) => onEscPress(event, instance));
+     instance.show();
+    document.addEventListener('keydown', closeModal);
 }
 
-function onEscPress(event, instance) {
-    const ESC_KEYCODE = 'Escape';
-
-    if (event.code === ESC_KEYCODE) {
+function closeModal(event) {
+    if (event.code === 'Escape') {
         instance.close();
-        document.removeEventListener('keydown', (event) => onEscPress(event, instance));
+        document.removeEventListener('keydown', closeModal);
     }
 }
+
 
 gallery.addEventListener('click', onGalleryClick);
 

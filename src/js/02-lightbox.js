@@ -1,26 +1,46 @@
 import {galleryItems} from './gallery-items.js';
 
 
-const galleryList = document.querySelector(".gallery");
+const gallery = document.querySelector('.gallery');
+let instance;
 
-galleryItems.forEach(({ preview, original, description }) => {
-    const galleryItem = document.createElement("li");
-    galleryItem.classList.add("gallery__item");
+function galleryHTML() {
+    return  galleryItems.map(({preview, description, original}) => {
+        return `
+                <li class="gallery__item">
+                    <a class="gallery__link" href="${original}">
+                        <img class="gallery__image" src="${preview}" alt="${description}" />
+                    </a>
+                </li>
+               `;
+    })
+        .join('');
 
-    const link = document.createElement("a");
-    link.classList.add("gallery__link");
-    link.href = original;
+}
 
-    const image = document.createElement("img");
-    image.classList.add("gallery__image");
-    image.src = preview;
-    image.alt = description;
+gallery.insertAdjacentHTML('beforeend', galleryHTML());
 
-    link.append(image);
-    galleryItem.append(link);
-    galleryList.append(galleryItem);
-});
+gallery.addEventListener('click', onGalleryClick);
 
+
+
+function onGalleryClick(e) {
+    e.preventDefault();
+
+    if (e.target.nodeName !== 'IMG') {
+        return;
+    }
+    document.addEventListener('keydown', closeModal);
+}
+
+function closeModal(event) {
+    if (event.code === 'Escape') {
+        instance.close();
+        document.removeEventListener('keydown', closeModal);
+    }
+}
+
+gallery.addEventListener('click', onGalleryClick);
 
 const lightbox = new SimpleLightbox(".gallery a", {
     captionsData: "alt",
