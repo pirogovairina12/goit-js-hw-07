@@ -20,27 +20,6 @@ function galleryHTML() {
 
 gallery.insertAdjacentHTML('beforeend', galleryHTML());
 
-gallery.addEventListener('click', onGalleryClick);
-
-
-
-function onGalleryClick(e) {
-    e.preventDefault();
-
-    if (e.target.nodeName !== 'IMG') {
-        return;
-    }
-    document.addEventListener('keydown', closeModal);
-}
-
-function closeModal(event) {
-    if (event.code === 'Escape') {
-        document.removeEventListener('keydown', closeModal);
-    }
-}
-
-gallery.addEventListener('click', onGalleryClick);
-
 const lightbox = new SimpleLightbox(".gallery a", {
     captionsData: "alt",
     captionDelay: 250,
