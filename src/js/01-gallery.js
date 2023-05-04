@@ -43,6 +43,7 @@ function closeModal(event) {
     if (event.code === 'Escape') {
         if (instance) {
             instance.close();
+            document.removeEventListener('keydown', closeModal);
         }
     }
 }
