@@ -29,19 +29,24 @@ function onGalleryClick(e) {
     const largeImageURL = e.target.dataset.source;
 
     instance = basicLightbox.create(`<img src="${largeImageURL}" width="800" height="600">`);
-    instance.show();
 
-    document.addEventListener('keydown', closeModal);
+    {
+        onShow: () => document.removeEventListener('keydown', closeModal);
+        onClose: () => document.addEventListener('keydown', closeModal);
+
+    }
+    instance.show();
 }
+
 
 function closeModal(event) {
     if (event.code === 'Escape') {
         if (instance) {
             instance.close();
         }
-
-        document.removeEventListener('keydown', closeModal);
     }
 }
 
 console.log(galleryItems);
+
+

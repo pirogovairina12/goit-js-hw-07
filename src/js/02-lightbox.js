@@ -18,6 +18,8 @@ function galleryHTML() {
 
 }
 
+
+
 gallery.insertAdjacentHTML('beforeend', galleryHTML());
 
 const lightbox = new SimpleLightbox(".gallery a", {
